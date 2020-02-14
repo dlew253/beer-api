@@ -51,8 +51,20 @@ app.put('/Beers/:id', (req, res)=> {
 });
 
 //destroy  delete  
-app.put('/Beers/:id', (req, res)=> {
-    res.send("DELETE ALL BEER AT ID" + req.params.id);
+app.put('/beers/:id', (req, res)=> {
+    res.send("UPDATE BEER AT ID" + req.params.id);
+});
+
+//destroy  delete  
+app.put('/beers/:id', (req, res)=> {
+ db.beer.destroy ({
+    where: {
+        name: 'Rainier'
+    }
+}).then(function(deletedBeer) {
+    console.log('BYE')
+    console.log(deletedBeer);
+}).catch(err => console.log(err));
 });
 
 
